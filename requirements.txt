@@ -1,0 +1,6 @@
+requests
+PyJWT
+urllib3
+protobuf
+Flask
+flask-cors
