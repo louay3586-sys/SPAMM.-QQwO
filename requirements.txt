@@ -1,6 +1,9 @@
 requests
 PyJWT
 urllib3
-protobuf
+protobuf==5.27.2
 Flask
 flask-cors
+protobuf-decoder
+pycryptodome
+googleapis-common-protos
