@@ -716,23 +716,39 @@ def legacy_stop():
 
 
 
-def restart_after_5_hours():
-        def restart_after_5_minutes():
+def restart_after_5_minutes():
     """Restart the whole Python process every 5 minutes."""
     RESTART_INTERVAL = 5 * 60  # 5 minutes
     time.sleep(RESTART_INTERVAL)
-    print(f"{YELLOW}[RESTART] 5 minutes reached - restarting process...{RESET}", flush=True)
+    print(
+        f"{YELLOW}[RESTART] 5 minutes reached - restarting process...{RESET}",
+        flush=True
+    )
     os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
 def run_api():
-    print(f"{GREEN}[START]{RESET} xAyOuB RooM API ... (interval={spam_speed}s per invite)")
-    threading.Thread(target=start_accounts, daemon=True).start()
+    print(
+        f"{GREEN}[START]{RESET} xAyOuB SpaM RooM API ... "
+        f"(interval={spam_speed}s per invite)"
+    )
 
-    # Automatic full process restart every 5 minutes.
-    threading.Thread(target=restart_after_5_minutes, daemon=True).start()
+    threading.Thread(
+        target=start_accounts,
+        daemon=True
+    ).start()
 
-    app.run(host='0.0.0.0', port=50019, debug=False, threaded=True)
+    threading.Thread(
+        target=restart_after_5_minutes,
+        daemon=True
+    ).start()
+
+    app.run(
+        host='0.0.0.0',
+        port=50019,
+        debug=False,
+        threaded=True
+    )
 
 
 if __name__ == "__main__":
