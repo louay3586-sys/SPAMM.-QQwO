@@ -717,7 +717,6 @@ def legacy_stop():
 
 
 def restart_after_5_minutes():
-    """Restart the whole Python process every 5 minutes."""
     RESTART_INTERVAL = 5 * 60  # 5 minutes
     time.sleep(RESTART_INTERVAL)
     print(
